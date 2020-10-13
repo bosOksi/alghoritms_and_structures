@@ -6,8 +6,13 @@ for i in range(n):
     for j in range(m):
         row[j] = int(row[j])
     array.append(row)
-result = [n][m]
 for i in range(n):
     for j in range(m):
-        if i > 0 & j > 0:
-            array[i][j]
+        if i > 0 and j > 0:
+            array[i][j] += min(array[i-1][j], array[i][j-1])
+        else:
+            if i > 0:
+                array[i][j] += array[i - 1][j]
+            elif j > 0:
+                array[i][j] += array[i][j - 1]
+print(array[n - 1][m - 1])
